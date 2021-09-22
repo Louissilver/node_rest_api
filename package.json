@@ -1,0 +1,26 @@
+{
+  "name": "devweb1",
+  "version": "1.0.0",
+  "description": "Trabalho do Grau 1 para disciplina Desenvolvimento para Web",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Louissilver/node_rest_api.git"
+  },
+  "author": "Luís Fernando da Silveira e Leonardo Edilson Auler",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Louissilver/node_rest_api/issues"
+  },
+  "homepage": "https://github.com/Louissilver/node_rest_api#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
+}
