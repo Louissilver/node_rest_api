@@ -1,7 +1,16 @@
-const express = require('express');
+const customExpress = require('./config/customExpress');
+const conexao = require('./infra/conexao');
+const Tabelas = require('./infra/tabelas');
 
-const app = express();
+conexao.connect((err) => {
+  if (err) {
+    console.log('Ocorreu um erro: ' + err);
+  } else {
+    console.log('Conexão com o banco de dados realizada com sucesso!');
 
-app.listen(3000, () => console.log('Servidor executando na porta 3000'));
+    Tabelas.init(conexao);
+    const app = customExpress();
 
-app.get('/atendimentos', (req, res) => res.send('<h1>Atendimentos</h1>'));
+    app.listen(3000, () => console.log('Servidor executando na porta 3000'));
+  }
+});
