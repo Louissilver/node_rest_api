@@ -25,8 +25,8 @@ npm install
 
 ### Pré requisitos
 
-NodeJS
-MySQL
+- NodeJS
+- MySQL
 
 ### Configurações
 
