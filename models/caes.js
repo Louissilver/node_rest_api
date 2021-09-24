@@ -3,7 +3,9 @@ const conexao = require('../infra/conexao');
 class Caes {
   adicionar(cao, res) {
 
-    const nomeEhValido = cao.nome.lenght >= 2;
+    const nomeEhValido = cao.nome.length >= 2;
+    console.log(cao.nome)
+    console.log(nomeEhValido)
 
     const validacoes = [
       {
@@ -32,6 +34,58 @@ class Caes {
     }
 
 
+  }
+
+  listar(res) {
+    const sql = 'SELECT * FROM caes';
+
+    conexao.query(sql, (err, results) => {
+      if (err) {
+        res.status(400).json(err);
+      } else {
+        res.status(200).json(results);
+      }
+    })
+  }
+
+  buscarPorId(id, res) {
+    const sql = `SELECT * FROM caes WHERE id = ${id}`;
+
+    conexao.query(sql, (err, results) => {
+      const cao = results[0];
+      if (err) {
+        res.status(400).json(err);
+      } else {
+        res.status(200).json(cao);
+      }
+    })
+  }
+
+  alterar(id, valores, res) {
+    const sql = `
+      UPDATE caes SET ?
+      WHERE id = ?
+    `
+
+    conexao.query(sql, [valores, id], (err, results) => {
+      if (err) {
+        res.status(400).json(err);
+      } else {
+        res.status(200).json(results);
+      }
+    });
+  }
+
+  deletar(id, res) {
+    const sql = `DELETE FROM caes WHERE id = ?`
+
+    conexao.query(sql, id, (err, results) => {
+      if (err) {
+        res.status(400).json(err);
+      } else {
+        res.status(200).json(results);
+      }
+    });
   }
 }
 
