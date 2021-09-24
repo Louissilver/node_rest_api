@@ -28,7 +28,7 @@ class Caes {
         if (err) {
           res.status(400).json(err);
         } else {
-          res.status(201).json(result);
+          res.status(201).json(cao);
         }
       })
     }
@@ -71,7 +71,7 @@ class Caes {
       if (err) {
         res.status(400).json(err);
       } else {
-        res.status(200).json(results);
+        res.status(200).json({ ...valores, id });
       }
     });
   }
@@ -83,7 +83,7 @@ class Caes {
       if (err) {
         res.status(400).json(err);
       } else {
-        res.status(200).json(results);
+        res.status(200).json({ id });
       }
     });
   }
